@@ -88,14 +88,16 @@ public class DPLL
             Set<Integer> nLiterals = new HashSet<Integer>();
             Boolean literalFound = false;
             
-            for (int l : x.getLiterals()) {
-                if (l == literal) {
-                    literalFound = true;
-                    break;
-                }
+            if (x.getLiterals().size() != 1) {
+                for (int l : x.getLiterals()) {
+                    if (l == literal) {
+                        literalFound = true;
+                        break;
+                    }
 
-                if (l != -literal) {
-                    nLiterals.add(l);
+                    if (l != -literal) {
+                        nLiterals.add(l);
+                    }
                 }
             }
 
