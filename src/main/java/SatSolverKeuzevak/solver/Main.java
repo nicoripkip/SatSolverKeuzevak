@@ -13,6 +13,7 @@ import java.util.Scanner;
 import java.util.Set;
 
 import SatSolverKeuzevak.solver.Clause;
+import SatSolverKeuzevak.solver.DPLL;
 
 
 /**
@@ -75,7 +76,7 @@ public class Main
                             System.out.println(c);
                             ArrayList<String> n = new ArrayList<String>(Arrays.asList(c.split(" ")));
 
-                            Set<Integer> in;
+                            Set<Integer> in = new HashSet<Integer>();
                             for (String l : n) {
                                 in.add(Integer.parseInt(l));
                             }
@@ -85,6 +86,9 @@ public class Main
                             clauses.add(clause);
                         }
                         
+                        DPLL dpll_algorithm = new DPLL();
+                        Boolean result = dpll_algorithm.run(clauses);
+                        System.out.println("CNF Satisfiable: " + result);
                         
                     break;
                     case "-f":

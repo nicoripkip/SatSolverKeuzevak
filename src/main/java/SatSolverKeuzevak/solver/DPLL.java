@@ -41,33 +41,34 @@ public class DPLL
      */
     public Boolean run(Set<Clause> phi)
     {
+        this.print(phi);
+
+        // Probeer unit clauses te verwijderen van de clause set phi
         while (this.containsUnitClause(phi)) {
             int literal = getUnitLiteral(phi);
             phi = this.unitPropagate(literal, phi);
         }
 
-        while (this.containsPureLiteral(phi)) {
-            int literal = 0;
-            phi = this.pureLiteralAssign(literal, phi);
-        }
+        // Probeer een waarde aan de pure literals te geven
+        // while (this.containsPureLiteral(phi)) {
+        //     int literal = 0;
+        //     phi = this.pureLiteralAssign(literal, phi);
+        // }
 
+        // Controleer of de set phi een lege set is
         if (phi.isEmpty()) {
             return true;
         }
 
+        // Controleer of er lege clauses aanwezig zijn in de set phi
         if (this.containsEmptyClause(phi)) {
             return false;
         }   
 
         int literal = this.chooseLiteral(phi);
-        Set<Clause> phi_p = phi;
-
-        phi.addAll(literal);
-
-        phi_p.addAll();
 
         // https://en.wikipedia.org/wiki/Short-circuit_evaluation
-        return this.run(phi) || this.run(phi_p);
+        return this.run(this.andLiteral(literal, phi)) || this.run(this.andLiteral(-literal, phi));
     }
 
 
@@ -202,5 +203,37 @@ public class DPLL
         }
 
         return 0;
+    }
+
+
+    /**
+     * Functie om een literal met de set phi te concatenaten
+     * 
+     * @param literal
+     * @param phi
+     * @return
+     */
+    private Set<Clause> andLiteral(int literal, Set<Clause> phi)
+    {
+        System.out.println("Lengte phi: " + phi.size());
+        Clause clause = new Clause();
+        clause.getLiterals().add(literal);
+        Set<Clause> n = new HashSet<Clause>();
+        n.add(clause);
+        phi.addAll(n);
+        return phi;
+    }
+
+
+    /**
+     * Functie om de inhoud van de set phi af te drukken
+     * 
+     * @param phi
+     */
+    private void print(Set<Clause> phi)
+    {
+        for (Clause x : phi) {
+            x.print();
+        }
     }
 }

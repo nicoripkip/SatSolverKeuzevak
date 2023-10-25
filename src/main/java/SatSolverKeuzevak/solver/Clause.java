@@ -1,6 +1,7 @@
 package SatSolverKeuzevak.solver;
 
 
+import java.util.HashSet;
 import java.util.Set;
 
 
@@ -19,7 +20,7 @@ public class Clause
      */
     public Clause()
     {
-
+        this._literals = new HashSet<Integer>();
     }
 
 
@@ -30,7 +31,11 @@ public class Clause
      */
     public void print()
     {
-        System.out.println("Jeg er en Clause");
+        System.out.print("{");
+        for (int x : this._literals) {
+            System.out.print(x + ", ");
+        }
+        System.out.println("}");
     }
 
 
