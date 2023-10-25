@@ -81,7 +81,9 @@ public class Main
                             Clause clause = new Clause();
                             clause.setLiterals(in);
                             clauses.add(clause);
-                        }                        
+                        }
+                        
+                        
                     break;
                     case "-f":
                         i++;

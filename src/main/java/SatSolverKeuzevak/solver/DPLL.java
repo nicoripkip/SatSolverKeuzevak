@@ -22,7 +22,7 @@ public class DPLL
      * @param clauses
      * @param Model
      */
-    public DPLL(List<Clause> clauses, ArrayList<Integer> Model)
+    public DPLL()
     {
 
     }
@@ -33,14 +33,27 @@ public class DPLL
      * 
      * @return
      */
-    public Boolean run()
+    public Boolean run(List<Clause> phi)
     {
-        while (this.containsUnitClause(this._clauses)) {
+        while (this.containsUnitClause(phi)) {
+
+        }
+
+        while (this.containsPureLiteral(phi)) {
+
+        }
+
+        if (phi.isEmpty()) {
+            return true;
+        }
+
+        if (this.containsEmptyClause(phi)) {
 
         }
 
         // https://en.wikipedia.org/wiki/Short-circuit_evaluation
-        return this.run() || this.run();
+        // return this.run() || this.run();
+        return false;
     }
 
 
@@ -74,6 +87,18 @@ public class DPLL
      * @return
      */
     private Boolean containsUnitClause(List<Clause> clauses)
+    {
+        return false;
+    }
+
+
+    private Boolean containsPureLiteral(List<Clause> clauses)
+    {
+        return false;
+    }
+
+
+    private Boolean containsEmptyClause(List<Clause> clauses)
     {
         return false;
     }
