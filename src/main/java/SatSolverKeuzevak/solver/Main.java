@@ -7,8 +7,10 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 
 import SatSolverKeuzevak.solver.Clause;
 
@@ -67,13 +69,13 @@ public class Main
                         // Construct een lijst van clauses van het DIMAC bestand
                         String[] dimacClauses = contents.split("\n");
 
-                        List<Clause> clauses = new ArrayList<Clause>();
+                        Set<Clause> clauses = new HashSet<Clause>();
                         for (String c : dimacClauses) {
                             c = c.substring(0, c.length()-2);
                             System.out.println(c);
                             ArrayList<String> n = new ArrayList<String>(Arrays.asList(c.split(" ")));
 
-                            ArrayList<Integer> in;
+                            Set<Integer> in;
                             for (String l : n) {
                                 in.add(Integer.parseInt(l));
                             }

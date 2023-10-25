@@ -1,6 +1,7 @@
 package SatSolverKeuzevak.solver;
 
-import java.util.ArrayList;
+
+import java.util.Set;
 
 
 /**
@@ -9,7 +10,7 @@ import java.util.ArrayList;
  */
 public class Clause 
 {
-    private ArrayList<Integer> _literals;
+    private Set<Integer> _literals;
 
 
     /**
@@ -38,7 +39,7 @@ public class Clause
      * 
      * @param literals
      */
-    public void setLiterals(ArrayList<Integer> literals)
+    public void setLiterals(Set<Integer> literals)
     {
         this._literals = literals;
     }
@@ -49,7 +50,7 @@ public class Clause
      * 
      * @return
      */
-    public ArrayList<Integer> getLiterals()
+    public Set<Integer> getLiterals()
     {
         return this._literals;
     }

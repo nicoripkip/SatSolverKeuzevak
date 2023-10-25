@@ -1,8 +1,9 @@
 package SatSolverKeuzevak.solver;
 
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 /**
@@ -33,7 +34,7 @@ public class DPLL
      * 
      * @return
      */
-    public Boolean run(List<Clause> phi)
+    public Boolean run(Set<Clause> phi)
     {
         while (this.containsUnitClause(phi)) {
 
@@ -63,9 +64,9 @@ public class DPLL
      * 
      * @return
      */
-    private List<Clause> unitPropagate()
+    private Set<Clause> unitPropagate()
     {
-        return new ArrayList<Clause>();
+        return new HashSet<Clause>();
     }
 
 
@@ -74,9 +75,9 @@ public class DPLL
      * 
      * @return
      */
-    private List<Clause> pureLiteralElimination()
+    private Set<Clause> pureLiteralElimination()
     {
-        return new ArrayList<Clause>();
+        return new HashSet<Clause>();
     }
 
 
@@ -86,19 +87,19 @@ public class DPLL
      * @param clauses
      * @return
      */
-    private Boolean containsUnitClause(List<Clause> clauses)
+    private Boolean containsUnitClause(Set<Clause> clauses)
     {
         return false;
     }
 
 
-    private Boolean containsPureLiteral(List<Clause> clauses)
+    private Boolean containsPureLiteral(Set<Clause> clauses)
     {
         return false;
     }
 
 
-    private Boolean containsEmptyClause(List<Clause> clauses)
+    private Boolean containsEmptyClause(Set<Clause> clauses)
     {
         return false;
     }
